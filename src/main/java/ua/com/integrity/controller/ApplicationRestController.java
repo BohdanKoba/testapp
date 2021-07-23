@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.com.integrity.bean.WordGame;
-import ua.com.integrity.service.impl.GameServiceImpl;
+import ua.com.integrity.service.GameService;
 
 /**
  * Controller of the application.
@@ -17,7 +17,7 @@ public class ApplicationRestController {
     /**
      * Service for working with request data.
      */
-    private final GameServiceImpl service;
+    private final GameService service;
 
     /**
      * Returns validated results of WordGame.
