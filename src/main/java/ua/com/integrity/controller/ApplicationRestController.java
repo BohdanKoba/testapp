@@ -4,18 +4,29 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.com.integrity.bean.WordArray;
-import ua.com.integrity.service.ArrayService;
+import ua.com.integrity.bean.WordGame;
+import ua.com.integrity.service.impl.GameServiceImpl;
 
+/**
+ * Controller of the application.
+ */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/app")
+@RequestMapping("/game")
 public class ApplicationRestController {
-    private final ArrayService service;
+    /**
+     * Service for working with request data.
+     */
+    private final GameServiceImpl service;
 
+    /**
+     * Returns validated results of WordGame.
+     *
+     * @param game a WordGame object passed in the request
+     * @return validated results of WordGame
+     */
     @RequestMapping("/check-words")
-    public WordArray getArray(@RequestBody WordArray input) {
-        String[] words = service.validateArray(input.getWords());
-        return new WordArray(words);
+    public WordGame validateGame(@RequestBody WordGame game) {
+        return service.checkWords(game.getWords());
     }
 }
